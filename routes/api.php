@@ -28,7 +28,9 @@ use App\Http\Controllers\MainSideController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-
+Route::post('inquiries', [InquiryController::class, 'create']);
+Route::post('/subscribers', [SubscriberController::class, 'create']);
+// Route::post('', [SubscriberController::class, 'create']);
 Route::prefix('auth')->group(function () {
     Route::post('register', [AuthController::class, 'register']);
     Route::post('login', [AuthController::class, 'login']);
@@ -71,7 +73,7 @@ Route::prefix('')->middleware('auth.admin')->group(function () {
     Route::prefix('inquiries')->group(function () {
         Route::get('', [InquiryController::class, 'getAll']);
         Route::get('{id}', [InquiryController::class, 'get']);
-        Route::post('', [InquiryController::class, 'create']);
+      
         Route::put('', [InquiryController::class, 'update']);
         Route::delete('{id}', [InquiryController::class, 'delete']);
     });
@@ -108,7 +110,7 @@ Route::prefix('')->middleware('auth.admin')->group(function () {
     Route::prefix('subscribers')->group(function () {
         Route::get('', [SubscriberController::class, 'getAll']);
         Route::get('{id}', [SubscriberController::class, 'get']);
-        Route::post('', [SubscriberController::class, 'create']);
+     
         Route::put('', [SubscriberController::class, 'update']);
         Route::delete('{id}', [SubscriberController::class, 'delete']);
     });

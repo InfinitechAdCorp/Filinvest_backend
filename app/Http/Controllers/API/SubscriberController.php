@@ -17,8 +17,9 @@ class SubscriberController extends Controller
     public $directory = "";
 
     public $rules = [
-        'email' => 'required|email|max:255',
+        'email' => 'required|email|max:255|unique:subscribers,email',
     ];
+    
 
     public function getAll()
     {
