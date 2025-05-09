@@ -28,6 +28,7 @@ use App\Http\Controllers\MainSideController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+Route::get('subscribers/unsubscribe/{email}', [MainSideController::class, 'unsubscribe']);
 Route::post('inquiries', [InquiryController::class, 'create']);
 Route::post('/subscribers', [SubscriberController::class, 'create']);
 // Route::post('', [SubscriberController::class, 'create']);
@@ -128,5 +129,5 @@ Route::prefix('main')->group(function () {
     Route::get('properties', [PropertyController::class, 'getAll']);
     Route::get('properties/{id}', [PropertyController::class, 'get']);
 
-    Route::get('unsubscribe/{email}', [MainSideController::class, 'unsubscribe']);
+   
 });
