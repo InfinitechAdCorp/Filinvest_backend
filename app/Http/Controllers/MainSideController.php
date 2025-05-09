@@ -10,15 +10,16 @@ class MainSideController extends Controller
 {
     public function unsubscribe($email)
     {
-        $record = Subscriber::where('email', $email);
-        if ($record) {
-            $record->delete();
-            $response = ['message' => "Deleted Subscriber"];
-            $code = 200;
+        $subscriber = Subscriber::where('email', $email)->first();
+    
+        if ($subscriber) {
+            $subscriber->delete();
+            // Redirect to your frontend unsubscribe confirmation page
+            return redirect()->away('https://filinvest-main-frontend.vercel.app/unsubscribe');
         } else {
-            $response = ['message' => "Subscriber Not Found"];
-            $code = 404;
+            // Optional: Redirect to a 'not found' page or still show unsubscribe confirmation
+            return redirect()->away('https://filinvest-main-frontend.vercel.app/unsubscribe');
         }
-        return response()->json($response, $code);
     }
+    
 }
